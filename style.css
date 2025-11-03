@@ -1,0 +1,296 @@
+/* 1. CSS Variables and Base Setup */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #222222;
+    --accent-color: #1dd1a1; /* A similar mint green */
+    --border-color: #eeeeee;
+    --nav-pill-bg: #f5f5f5;
+    --nav-pill-active-bg: #333333;
+    --nav-pill-active-text: #ffffff;
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #f5f5f5;
+    --border-color: #333333;
+    --nav-pill-bg: #2b2b2b;
+    --nav-pill-active-bg: #f5f5f5;
+    --nav-pill-active-text: #222222;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button {
+    font-family: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+}
+h1, h2, h3, h4 {
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+p { margin-bottom: 1rem; }
+
+/* 2. Header and Main Navigation */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+}
+
+body.dark-mode .logo {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.main-nav ul { display: flex; gap: 0.5rem; }
+.main-nav a {
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: var(--nav-pill-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+.main-nav a.active, .main-nav a:hover {
+    background-color: var(--nav-pill-active-bg);
+    color: var(--nav-pill-active-text);
+    border-color: var(--nav-pill-active-bg);
+}
+
+.header-controls { display: flex; align-items: center; gap: 0.5rem; }
+.header-controls button {
+    font-size: 1.25rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background-color: var(--nav-pill-bg);
+    border: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+.header-controls button:hover { background-color: var(--border-color); }
+
+/* 3. Main Content Layout */
+.page-container {
+    display: flex;
+    padding: 2.5rem;
+    gap: 2rem;
+}
+
+/* 4. Left Sidebar */
+.sidebar {
+    flex: 0 0 220px; /* Sidebar width: 220px */
+    padding-top: 1rem;
+}
+
+.sidebar-nav ul { display: flex; flex-direction: column; gap: 1.5rem; }
+.sidebar-nav a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #888;
+    transition: color 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.sidebar-nav a:hover { color: var(--text-color); }
+.sidebar-nav a.active { color: var(--text-color); }
+.sidebar-nav a.active span { opacity: 1; }
+.sidebar-nav span {
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* 5. Main Content Area */
+.main-content {
+    flex: 1; /* Take remaining space */
+}
+
+.content-panel {
+    display: none; /* Hide all panels by default */
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 4rem;
+    min-height: 70vh;
+}
+
+.content-panel.active {
+    display: block; /* Show the active panel */
+}
+
+/* 5a. "About Me" Panel (special flex layout) */
+.content-panel.hero-card.active {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.hero-text { flex: 1.2; }
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 0; /* Override default */
+}
+.hero-text .highlight { color: var(--accent-color); }
+
+.hero-image-placeholder {
+    flex: 1;
+    height: 450px;
+    border: 2px dashed var(--border-color);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #aaa;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 2rem;
+}
+.hero-image-placeholder span {
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-top: 0.5rem;
+}
+
+/* 6. Placeholder Styles for Other Panels */
+
+/* Work Experience Placeholder */
+.job-entry {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+.job-entry:last-child {
+    border-bottom: none;
+}
+.job-entry h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+.job-entry .company {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 1rem;
+}
+.job-entry ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+/* Portfolio Placeholder */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+.project-card {
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background-color: var(--nav-pill-bg);
+}
+.project-card .img-placeholder {
+    height: 200px;
+    background-color: var(--border-color);
+    border-radius: 16px 16px 0 0;
+    display: grid;
+    place-items: center;
+    color: #999;
+}
+.project-card .project-info {
+    padding: 1rem;
+}
+.project-card .project-info h4 {
+    margin-bottom: 0.25rem;
+}
+.project-card .project-info p {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 0;
+}
+
+/* Certifications Placeholder */
+.cert-list {
+    list-style: none;
+}
+.cert-list li {
+    font-size: 1.1rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.cert-list li:first-child {
+    border-top: 1px solid var(--border-color);
+}
+
+/* 7. Contact Section Styles (NEW) */
+.contact-details {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.contact-item h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 0.25rem;
+}
+
+.contact-item p {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.contact-item a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.contact-item a:hover {
+    opacity: 0.7;
+}
