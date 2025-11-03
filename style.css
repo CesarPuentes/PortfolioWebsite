@@ -144,8 +144,12 @@ body.dark-mode .logo {
     flex: 1; /* Take remaining space */
 }
 
+/* * !! --- THIS SECTION IS THE KEY CHANGE --- !!
+ * We no longer hide/show panels. The JS loads them one by one.
+ * We just need the default styles for a panel.
+*/
 .content-panel {
-    display: none; /* Hide all panels by default */
+    display: block; /* This is the default, but good to be explicit */
     background-color: var(--bg-color);
     border: 1px solid var(--border-color);
     border-radius: 24px;
@@ -153,18 +157,21 @@ body.dark-mode .logo {
     min-height: 70vh;
 }
 
-.content-panel.active {
-    display: block; /* Show the active panel */
-}
-
-/* 5a. "About Me" Panel (special flex layout) */
-.content-panel.hero-card.active {
+/* * This rule NO LONGER HAS ".active"
+ * It applies to the hero-card panel whenever it is loaded.
+*/
+.content-panel.hero-card {
     display: flex;
     align-items: center;
     gap: 2rem;
 }
 
-.hero-text { flex: 1.2; }
+.hero-text { 
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
 .hero-text h1 {
     font-size: 3rem;
     font-weight: 400;
@@ -194,9 +201,44 @@ body.dark-mode .logo {
     margin-top: 0.5rem;
 }
 
+/* Profile summary and skills */
+.hero-text .profile-summary {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555; 
+    margin-bottom: 0;
+}
+
+body.dark-mode .hero-text .profile-summary {
+    color: #bbb;
+}
+
+.hero-text .skills-summary h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.75rem;
+}
+
+.hero-text .skills-summary ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+}
+
+.hero-text .skills-summary li {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+    background-color: var(--nav-pill-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+}
+
 /* 6. Placeholder Styles for Other Panels */
 
-/* Work Experience Placeholder */
+/* Work Experience & Certification Entry */
 .job-entry {
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 1.5rem;
@@ -251,7 +293,7 @@ body.dark-mode .logo {
     margin-bottom: 0;
 }
 
-/* Certifications Placeholder */
+/* Certification List Styles */
 .cert-list {
     list-style: none;
 }
@@ -264,7 +306,30 @@ body.dark-mode .logo {
     border-top: 1px solid var(--border-color);
 }
 
-/* 7. Contact Section Styles (NEW) */
+.cert-skills {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 0.75rem;
+}
+
+body.dark-mode .cert-skills {
+    color: #bbb;
+}
+
+.credential-link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.credential-link:hover {
+    opacity: 0.7;
+}
+
+/* 7. Contact Section Styles */
 .contact-details {
     margin-top: 2rem;
     display: grid;

@@ -5,24 +5,41 @@ themeToggle.addEventListener('click', () => {
     themeToggle.textContent = document.body.classList.contains('dark-mode') ? '🌙' : '☀️';
 });
 
-// 2. Panel Toggling Logic (NEW UNIFIED FUNCTION)
-// This function now handles both the header and sidebar nav, keeping them in sync.
-function setupPanelToggling() {
-    // Get all links that can toggle a panel (from header and sidebar)
-    // The "My LinkedIn" link is excluded because it lacks a 'data-target' attribute.
+// 2. Content Loading and Panel Toggling
+document.addEventListener('DOMContentLoaded', () => {
+    const contentContainer = document.getElementById('content-container');
     const allToggleLinks = document.querySelectorAll('.sidebar-nav a, .main-nav a[data-target]');
-    const allContentPanels = document.querySelectorAll('.content-panel');
 
+    // Function to fetch and load content
+    async function loadContent(targetId) {
+        // Set a loading state
+        contentContainer.innerHTML = '<p style="padding: 2rem;">Loading...</p>';
+        
+        try {
+            const response = await fetch(`sections/${targetId}.html`);
+            
+            if (!response.ok) {
+                throw new Error(`Could not load section: ${response.status}`);
+            }
+            
+            const html = await response.text();
+            contentContainer.innerHTML = html;
+
+        } catch (error) {
+            console.error('Error fetching content:', error);
+            contentContainer.innerHTML = '<p style="padding: 2rem; color: red;">Error: Could not load content. Please try again.</p>';
+        }
+    }
+
+    // Add click event to all navigation links
     allToggleLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const targetId = e.currentTarget.getAttribute('data-target');
-            if (!targetId) return; // Safety check
+            if (!targetId) return; // Ignore links without a data-target
 
-            // Update content panel "active" state
-            allContentPanels.forEach(panel => {
-                panel.classList.toggle('active', panel.id === targetId);
-            });
+            // Load the new content
+            loadContent(targetId);
 
             // Update "active" state for ALL toggle links (syncs header and sidebar)
             allToggleLinks.forEach(l => {
@@ -30,7 +47,7 @@ function setupPanelToggling() {
             });
         });
     });
-}
 
-// Run the new setup
-setupPanelToggling();
+    // Load the default "about-me" content when the page first loads
+    loadContent('about-me');
+});
