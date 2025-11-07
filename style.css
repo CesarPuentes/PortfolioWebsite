@@ -33,7 +33,33 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-a { color: inherit; text-decoration: none; }
+/* --- START OF LINK FIXES --- */
+a { 
+    color: inherit; 
+    text-decoration: none; 
+    transition: color 0.2s, background-color 0.2s; /* Added transition */
+}
+
+a:hover {
+    color: var(--accent-color); /* Subtle hover feedback */
+    text-decoration: underline; 
+    background-color: transparent; /* Ensures no background highlight on hover */
+}
+
+a:focus {
+    /* Removes default browser highlight (outline) and replaces it with a subtle box-shadow for accessibility */
+    outline: none; 
+    box-shadow: 0 0 0 2px var(--accent-color); /* Custom focus ring using accent color */
+    border-radius: 4px; 
+    background-color: transparent; /* Ensures no background highlight on focus */
+}
+
+a:active {
+    /* Prevents highlight when the link is actively being pressed */
+    background-color: transparent;
+}
+/* --- END OF LINK FIXES --- */
+
 ul { list-style: none; }
 button {
     font-family: inherit;
