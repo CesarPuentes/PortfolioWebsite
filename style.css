@@ -392,3 +392,82 @@ body.dark-mode .cert-skills {
     object-fit: cover; /* Ensures the image fills the area without stretching */
     border-bottom: 1px solid #eee;
 }
+
+/* 8. Mobile Styles (Media Query) */
+@media (max-width: 768px) {
+    
+    /* Adjust overall padding for smaller screens */
+    .page-header {
+        padding: 1rem 1.5rem;
+    }
+
+    .main-nav {
+        /* Hide the main-nav pill navigation on mobile to save space */
+        display: none; 
+    }
+
+    /* 1. Stack the sidebar and main content */
+    .page-container {
+        flex-direction: column; /* Stacks the children vertically */
+        padding: 1.5rem; /* Reduce padding for mobile */
+        gap: 1.5rem;
+    }
+    
+    /* 2. Move the sidebar to the top using the 'order' property */
+    .sidebar {
+        flex: 1 1 auto; /* Allow the sidebar to grow/shrink based on content */
+        order: -1;     /* Moves it visually before elements with order: 0 (main-content) */
+        padding-top: 0;
+    }
+
+    /* 3. Adjust the sidebar navigation for mobile */
+    .sidebar-nav ul {
+        flex-direction: row; /* Change menu to be horizontal */
+        flex-wrap: wrap;     /* Allow menu items to wrap to the next line */
+        gap: 0.5rem;         /* Space out the new horizontal menu items */
+    }
+
+    .sidebar-nav a {
+        /* Apply pill-style to the mobile menu items */
+        padding: 0.6rem 1.2rem;
+        border-radius: 999px;
+        background-color: var(--nav-pill-bg);
+        border: 1px solid var(--border-color);
+        color: var(--text-color);
+        font-size: 0.85rem;
+        transition: background-color 0.2s, color 0.2s;
+        
+        /* Remove the arrow span */
+        justify-content: center;
+    }
+
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active {
+        background-color: var(--nav-pill-active-bg);
+        color: var(--nav-pill-active-text);
+        border-color: var(--nav-pill-active-bg);
+    }
+    
+    .sidebar-nav a span {
+        display: none; /* Hide the arrow from the sidebar menu */
+    }
+
+    /* Adjust main content padding and layout for mobile */
+    .content-panel {
+        padding: 2rem 1.5rem; /* Reduce padding inside the main content panels */
+    }
+    
+    .content-panel.hero-card {
+        flex-direction: column; /* Stack the hero text and image vertically */
+        text-align: center;
+    }
+
+    .hero-image-placeholder {
+        order: -1; /* Move the image above the hero text on mobile */
+        height: 300px;
+    }
+    
+    .hero-text .skills-summary ul {
+        justify-content: center; /* Center the skill pills */
+    }
+}
