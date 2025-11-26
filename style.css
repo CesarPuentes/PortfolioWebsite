@@ -2,7 +2,8 @@
 :root {
     --bg-color: #ffffff;
     --text-color: #222222;
-    --accent-color: #1dd1a1; /* A similar mint green */
+    --accent-color: #1dd1a1;
+    /* A similar mint green */
     --border-color: #eeeeee;
     --nav-pill-bg: #f5f5f5;
     --nav-pill-active-bg: #333333;
@@ -34,33 +35,42 @@ body {
 }
 
 /* --- START OF LINK FIXES --- */
-a { 
-    color: inherit; 
-    text-decoration: none; 
-    transition: color 0.2s, background-color 0.2s; /* Added transition */
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s, background-color 0.2s;
+    /* Added transition */
 }
 
 a:hover {
-    color: var(--accent-color); /* Subtle hover feedback */
-    text-decoration: underline; 
-    background-color: transparent; /* Ensures no background highlight on hover */
+    color: var(--accent-color);
+    /* Subtle hover feedback */
+    text-decoration: underline;
+    background-color: transparent;
+    /* Ensures no background highlight on hover */
 }
 
 a:focus {
     /* Removes default browser highlight (outline) and replaces it with a subtle box-shadow for accessibility */
-    outline: none; 
-    box-shadow: 0 0 0 2px var(--accent-color); /* Custom focus ring using accent color */
-    border-radius: 4px; 
-    background-color: transparent; /* Ensures no background highlight on focus */
+    outline: none;
+    box-shadow: 0 0 0 2px var(--accent-color);
+    /* Custom focus ring using accent color */
+    border-radius: 4px;
+    background-color: transparent;
+    /* Ensures no background highlight on focus */
 }
 
 a:active {
     /* Prevents highlight when the link is actively being pressed */
     background-color: transparent;
 }
+
 /* --- END OF LINK FIXES --- */
 
-ul { list-style: none; }
+ul {
+    list-style: none;
+}
+
 button {
     font-family: inherit;
     background: none;
@@ -68,12 +78,19 @@ button {
     cursor: pointer;
     color: inherit;
 }
-h1, h2, h3, h4 {
+
+h1,
+h2,
+h3,
+h4 {
     line-height: 1.3;
     margin-bottom: 1rem;
     font-weight: 600;
 }
-p { margin-bottom: 1rem; }
+
+p {
+    margin-bottom: 1rem;
+}
 
 /* 2. Header and Main Navigation */
 .page-header {
@@ -101,7 +118,11 @@ body.dark-mode .logo {
     color: var(--text-color);
 }
 
-.main-nav ul { display: flex; gap: 0.5rem; }
+.main-nav ul {
+    display: flex;
+    gap: 0.5rem;
+}
+
 .main-nav a {
     padding: 0.6rem 1.2rem;
     border-radius: 999px;
@@ -112,13 +133,20 @@ body.dark-mode .logo {
     border: 1px solid var(--border-color);
     transition: background-color 0.2s;
 }
-.main-nav a.active, .main-nav a:hover {
+
+.main-nav a.active,
+.main-nav a:hover {
     background-color: var(--nav-pill-active-bg);
     color: var(--nav-pill-active-text);
     border-color: var(--nav-pill-active-bg);
 }
 
-.header-controls { display: flex; align-items: center; gap: 0.5rem; }
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .header-controls button {
     font-size: 1.25rem;
     width: 40px;
@@ -130,7 +158,10 @@ body.dark-mode .logo {
     border: 1px solid var(--border-color);
     transition: background-color 0.2s;
 }
-.header-controls button:hover { background-color: var(--border-color); }
+
+.header-controls button:hover {
+    background-color: var(--border-color);
+}
 
 /* 3. Main Content Layout */
 .page-container {
@@ -141,11 +172,17 @@ body.dark-mode .logo {
 
 /* 4. Left Sidebar */
 .sidebar {
-    flex: 0 0 220px; /* Sidebar width: 220px */
+    flex: 0 0 220px;
+    /* Sidebar width: 220px */
     padding-top: 1rem;
 }
 
-.sidebar-nav ul { display: flex; flex-direction: column; gap: 1.5rem; }
+.sidebar-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
 .sidebar-nav a {
     font-size: 0.95rem;
     font-weight: 500;
@@ -156,9 +193,19 @@ body.dark-mode .logo {
     align-items: center;
     cursor: pointer;
 }
-.sidebar-nav a:hover { color: var(--text-color); }
-.sidebar-nav a.active { color: var(--text-color); }
-.sidebar-nav a.active span { opacity: 1; }
+
+.sidebar-nav a:hover {
+    color: var(--text-color);
+}
+
+.sidebar-nav a.active {
+    color: var(--text-color);
+}
+
+.sidebar-nav a.active span {
+    opacity: 1;
+}
+
 .sidebar-nav span {
     font-size: 1.2rem;
     opacity: 0;
@@ -167,7 +214,8 @@ body.dark-mode .logo {
 
 /* 5. Main Content Area */
 .main-content {
-    flex: 1; /* Take remaining space */
+    flex: 1;
+    /* Take remaining space */
 }
 
 /* * !! --- THIS SECTION IS THE KEY CHANGE --- !!
@@ -175,7 +223,8 @@ body.dark-mode .logo {
  * We just need the default styles for a panel.
 */
 .content-panel {
-    display: block; /* This is the default, but good to be explicit */
+    display: block;
+    /* This is the default, but good to be explicit */
     background-color: var(--bg-color);
     border: 1px solid var(--border-color);
     border-radius: 24px;
@@ -192,19 +241,24 @@ body.dark-mode .logo {
     gap: 2rem;
 }
 
-.hero-text { 
+.hero-text {
     flex: 1.2;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
+
 .hero-text h1 {
     font-size: 3rem;
     font-weight: 400;
     line-height: 1.4;
-    margin-bottom: 0; /* Override default */
+    margin-bottom: 0;
+    /* Override default */
 }
-.hero-text .highlight { color: var(--accent-color); }
+
+.hero-text .highlight {
+    color: var(--accent-color);
+}
 
 .hero-image-placeholder {
     flex: 1;
@@ -221,6 +275,7 @@ body.dark-mode .logo {
     font-weight: 500;
     padding: 2rem;
 }
+
 .hero-image-placeholder span {
     font-size: 0.9rem;
     font-weight: 400;
@@ -231,7 +286,7 @@ body.dark-mode .logo {
 .hero-text .profile-summary {
     font-size: 1rem;
     line-height: 1.6;
-    color: #555; 
+    color: #555;
     margin-bottom: 0;
 }
 
@@ -270,19 +325,23 @@ body.dark-mode .hero-text .profile-summary {
     padding-bottom: 1.5rem;
     margin-bottom: 2rem;
 }
+
 .job-entry:last-child {
     border-bottom: none;
 }
+
 .job-entry h3 {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 0.25rem;
 }
+
 .job-entry .company {
     font-style: italic;
     color: #777;
     margin-bottom: 1rem;
 }
+
 .job-entry ul {
     list-style: disc;
     padding-left: 20px;
@@ -294,11 +353,13 @@ body.dark-mode .hero-text .profile-summary {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
 }
+
 .project-card {
     border: 1px solid var(--border-color);
     border-radius: 16px;
     background-color: var(--nav-pill-bg);
 }
+
 .project-card .img-placeholder {
     height: 200px;
     background-color: var(--border-color);
@@ -307,12 +368,15 @@ body.dark-mode .hero-text .profile-summary {
     place-items: center;
     color: #999;
 }
+
 .project-card .project-info {
     padding: 1rem;
 }
+
 .project-card .project-info h4 {
     margin-bottom: 0.25rem;
 }
+
 .project-card .project-info p {
     font-size: 0.9rem;
     color: #777;
@@ -321,31 +385,41 @@ body.dark-mode .hero-text .profile-summary {
 
 .project-tags {
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
     margin-top: 0.5rem;
+    padding: 0;
 }
 
 .project-tags li {
-    font-size: 0.75rem;
+    display: inline;
+    font-size: 0.9rem;
     font-weight: 500;
-    padding: 0.2rem 0.6rem;
-    background-color: var(--nav-pill-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 999px;
     color: var(--text-color);
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.project-tags li:not(:last-child)::after {
+    content: ", ";
+}
+
+/* Remove hover effects for project card links */
+a.project-card:hover {
+    text-decoration: none;
+    color: inherit;
 }
 
 /* Certification List Styles */
 .cert-list {
     list-style: none;
 }
+
 .cert-list li {
     font-size: 1.1rem;
     padding: 1rem;
     border-bottom: 1px solid var(--border-color);
 }
+
 .cert-list li:first-child {
     border-top: 1px solid var(--border-color);
 }
@@ -406,14 +480,16 @@ body.dark-mode .cert-skills {
 
 .project-thumb {
     width: 100%;
-    height: 200px; /* Adjust this height to match your preference */
-    object-fit: cover; /* Ensures the image fills the area without stretching */
+    height: 200px;
+    /* Adjust this height to match your preference */
+    object-fit: cover;
+    /* Ensures the image fills the area without stretching */
     border-bottom: 1px solid #eee;
 }
 
 /* 8. Mobile Styles (Media Query) */
 @media (max-width: 768px) {
-    
+
     /* Adjust overall padding for smaller screens */
     .page-header {
         padding: 1rem 1.5rem;
@@ -421,28 +497,35 @@ body.dark-mode .cert-skills {
 
     .main-nav {
         /* Hide the main-nav pill navigation on mobile to save space */
-        display: none; 
+        display: none;
     }
 
     /* 1. Stack the sidebar and main content */
     .page-container {
-        flex-direction: column; /* Stacks the children vertically */
-        padding: 1.5rem; /* Reduce padding for mobile */
+        flex-direction: column;
+        /* Stacks the children vertically */
+        padding: 1.5rem;
+        /* Reduce padding for mobile */
         gap: 1.5rem;
     }
-    
+
     /* 2. Move the sidebar to the top using the 'order' property */
     .sidebar {
-        flex: 1 1 auto; /* Allow the sidebar to grow/shrink based on content */
-        order: -1;     /* Moves it visually before elements with order: 0 (main-content) */
+        flex: 1 1 auto;
+        /* Allow the sidebar to grow/shrink based on content */
+        order: -1;
+        /* Moves it visually before elements with order: 0 (main-content) */
         padding-top: 0;
     }
 
     /* 3. Adjust the sidebar navigation for mobile */
     .sidebar-nav ul {
-        flex-direction: row; /* Change menu to be horizontal */
-        flex-wrap: wrap;     /* Allow menu items to wrap to the next line */
-        gap: 0.5rem;         /* Space out the new horizontal menu items */
+        flex-direction: row;
+        /* Change menu to be horizontal */
+        flex-wrap: wrap;
+        /* Allow menu items to wrap to the next line */
+        gap: 0.5rem;
+        /* Space out the new horizontal menu items */
     }
 
     .sidebar-nav a {
@@ -454,7 +537,7 @@ body.dark-mode .cert-skills {
         color: var(--text-color);
         font-size: 0.85rem;
         transition: background-color 0.2s, color 0.2s;
-        
+
         /* Remove the arrow span */
         justify-content: center;
     }
@@ -465,27 +548,32 @@ body.dark-mode .cert-skills {
         color: var(--nav-pill-active-text);
         border-color: var(--nav-pill-active-bg);
     }
-    
+
     .sidebar-nav a span {
-        display: none; /* Hide the arrow from the sidebar menu */
+        display: none;
+        /* Hide the arrow from the sidebar menu */
     }
 
     /* Adjust main content padding and layout for mobile */
     .content-panel {
-        padding: 2rem 1.5rem; /* Reduce padding inside the main content panels */
+        padding: 2rem 1.5rem;
+        /* Reduce padding inside the main content panels */
     }
-    
+
     .content-panel.hero-card {
-        flex-direction: column; /* Stack the hero text and image vertically */
+        flex-direction: column;
+        /* Stack the hero text and image vertically */
         text-align: center;
     }
 
     .hero-image-placeholder {
-        order: -1; /* Move the image above the hero text on mobile */
+        order: -1;
+        /* Move the image above the hero text on mobile */
         height: 300px;
     }
-    
+
     .hero-text .skills-summary ul {
-        justify-content: center; /* Center the skill pills */
+        justify-content: center;
+        /* Center the skill pills */
     }
 }
