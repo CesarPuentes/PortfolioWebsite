@@ -316,7 +316,25 @@ body.dark-mode .hero-text .profile-summary {
 .project-card .project-info p {
     font-size: 0.9rem;
     color: #777;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
+}
+
+.project-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.project-tags li {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.2rem 0.6rem;
+    background-color: var(--nav-pill-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    color: var(--text-color);
 }
 
 /* Certification List Styles */
